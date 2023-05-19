@@ -18,7 +18,7 @@ const images = [
 
 const Gallery = () => {
     return (
-        <Marquee className="my-10">
+        <Marquee gradient={true} gradientColor={[150, 150, 150]} className="my-10">
             {
                 images.map((image,i) => <img
                 key={i}
