@@ -70,11 +70,11 @@ const Login = () => {
                 </div>
 
                 <div className='card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
-                    <form onSubmit={handleLogin} className="form-control ">
-                        <div className="card-body">
-                            <h3 className="text-center text-3xl font-semibold">Login</h3>
-                            <hr />
-                            <button onClick={handleGoogleLogin} className="btn btn-outline hover:bg-[#34A853] hover:border-[#34A853]">Log in with Google  <FaGoogle className="ml-1"></FaGoogle></button>
+                    <div className="card-body">
+                        <h3 className="text-center text-3xl font-semibold">Login</h3>
+                        <hr />
+                        <button onClick={handleGoogleLogin} className="btn btn-outline hover:bg-[#34A853] hover:border-[#34A853]">Log in with Google  <FaGoogle className="ml-1"></FaGoogle></button>
+                        <form onSubmit={handleLogin} className="form-control ">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -99,14 +99,14 @@ const Login = () => {
                             </div>
 
                             <h3>Don't have an account?<Link to="/register" className="text-blue-500 font-semibold"> Register</Link></h3>
-                        </div>
+                        </form>
+                    </div>
 
-                    </form>
                 </div>
 
 
             </div>
-        </div>
+        </div >
     );
 };
 

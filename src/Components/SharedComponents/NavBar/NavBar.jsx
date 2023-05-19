@@ -1,8 +1,18 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { FaRegUserCircle } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const NavBar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleImageError = event => {
+        event.target.src = "https://cdn-icons-png.flaticon.com/512/1159/1159740.png?w=826&t=st=1684510789~exp=1684511389~hmac=001c7068b857dcdf5d33ca46a56143913e082a0a3dff59fefd023af56e239687";
+    }
+
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-purple-300">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -49,7 +59,28 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to={"/login"} className="btn">Login</Link>
+                {/* <Link to={"/login"} className="btn">Login</Link> */}
+                {
+                    user ?
+                        <>
+                            <div className='flex order-2 md:order-3 justify-center items-center gap-[1vh] md:gap-[2vh]'>
+                                <div className={user.displayName ? `tooltip hover:tooltip-open tooltip-bottom` : ''} data-tip={user.displayName}>
+                                    {
+                                        user.photoURL ?
+                                    <img className='rounded-full md:w-10 w-14 h-14 md:h-10' src={user.photoURL} onError={handleImageError}/>
+                                            :
+                                            <FaRegUserCircle className='h-10 w-10 text-white'></FaRegUserCircle>
+                                    }
+                                </div>
+                                <Link className='text-xl md:text-2xl text-white' onClick={logOut}><button>Logout</button></Link>
+                            </div>
+                        </>
+                        :
+                        <div className='flex order-2 md:order-3 text-white text-2xl gap-3'>
+                            <Link to='/login'><button>Login</button></Link>
+                        </div>
+
+                }
             </div>
         </div>
     );
