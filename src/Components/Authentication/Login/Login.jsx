@@ -1,6 +1,67 @@
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthorizationContext } from "../../Providers/AuthProvider";
+import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
+
+    const [errorMessage, setErrorMessage] = useState(null);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    const { signIn, googleLogin } = useContext(AuthorizationContext);
+
+    console.log(AuthorizationContext)
+
+    function firebaseErrorFormater(error) {
+        let errMsg = 'An error occurred.';
+
+        switch (error.code) {
+            case 'auth/invalid-email':
+            case 'auth/wrong-password':
+            case 'auth/user-not-found':
+            case 'auth/missing-email':
+                errMsg = 'The provided email or password is invalid.';
+                break;
+        }
+
+        return errMsg;
+    }
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const data = event.target;
+        const email = data.email.value;
+        const password = data.password.value;
+
+        signIn(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                navigate(from, { replace: true });
+                setErrorMessage('');
+            })
+            .catch(error => {
+                console.log(error);
+                setErrorMessage(firebaseErrorFormater(error));
+            })
+    }
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+
+                const loggedUser = result.user;
+                navigate(from, { replace: true });
+                setErrorMessage('');
+            }
+            )
+            .catch(error => {
+                console.log(error);
+                setErrorMessage(firebaseErrorFormater(error));
+            })
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1206&q=80")` }}>
             <div className="hero-content flex-col lg:flex-row">
@@ -8,10 +69,11 @@ const Login = () => {
                     <h1 className="text-5xl font-bold">Login now!</h1>
                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div onSubmit={handleLogin} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
                         <h3 className="text-center text-3xl font-semibold">Login</h3>
                         <hr />
+                        <button onClick={handleGoogleLogin} className="btn btn-outline hover:bg-[#34A853] hover:border-[#34A853]">Log in with Google  <FaGoogle className="ml-1"></FaGoogle></button>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -23,7 +85,7 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="Password" className="input input-bordered" />
-                            
+
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
