@@ -5,6 +5,8 @@ const AddAToy = () => {
 
     const { user } = useContext(AuthContext);
 
+    console.log(user);
+
     const handleToyAddition = event => {
         event.preventDefault();
 
@@ -13,6 +15,7 @@ const AddAToy = () => {
         const toyName = form.toyName.value;
         const sellerName = form.sellerName.value;
         const sellerEmail = form.email.value;
+        const subCategory = form.subCategory.value;
         const price = form.price.value;
         const rating = form.rating.value;
         const quantity = form.quantity.value;
@@ -23,6 +26,7 @@ const AddAToy = () => {
             toyName,
             sellerName,
             sellerEmail,
+            subCategory,
             price,
             rating,
             quantity,
@@ -31,6 +35,23 @@ const AddAToy = () => {
         }
 
         console.log(toy);
+
+        fetch('http://localhost:5000/toys', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(toy)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    alert('Product added successfully')
+                }
+            })
+
+
     }
 
     return (
@@ -46,12 +67,21 @@ const AddAToy = () => {
                     <label className="label">
                         <span className="label-text text-xl">Seller Name</span>
                     </label>
-                    <input name='sellerName' type="text" placeholder="Jane Doe" className="input input-bordered" />
+                    <input name='sellerName' type="text" defaultValue={user.displayName} placeholder="Jane Doe" className="input input-bordered" />
 
                     <label className="label">
                         <span className="label-text text-xl">Seller Email</span>
                     </label>
-                    <input name='email' type="email" required placeholder="example@mail.com" className="input input-bordered" />
+                    <input name='email' type="email" defaultValue={user.email} required placeholder="example@mail.com" className="input input-bordered" />
+
+                    <label className="label">
+                        <span className="label-text text-xl">Sub Category</span>
+                    </label>
+                    <select className="input input-bordered" required name="subCategory">
+                        <option value="traditional">Traditional Boardgame</option>
+                        <option value="tabletop">Tabletop Boardgame</option>
+                        <option value="puzzle">Puzzle</option>
+                    </select>
 
                     <label className="label">
                         <span className="label-text text-xl">Price</span>
@@ -66,7 +96,7 @@ const AddAToy = () => {
                     <label className="label">
                         <span className="label-text text-xl">Quantity</span>
                     </label>
-                    <input name='quantity' type="number" required placeholder="Enter the number of available toys" className="input input-bordered" />
+                    <input name='quantity' type="number" min={0} required placeholder="Enter the number of available toys" className="input input-bordered" />
 
                     <label className="label">
                         <span className="label-text text-xl">Description</span>
@@ -78,7 +108,7 @@ const AddAToy = () => {
                     </label>
                     <input name='photo' type="text" required placeholder="http://www.imgurl.com" className="input input-bordered" />
 
-                    <button type='submit' className="btn mt-3">Register</button>
+                    <button type='submit' className="btn mt-3">Add Product</button>
 
                 </form>
             </div>
