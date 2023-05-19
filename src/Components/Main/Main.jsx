@@ -2,7 +2,7 @@ import Banner from "./Banner/Banner";
 
 const Main = () => {
     return (
-        <div className="min-h-[65vh]">
+        <div>
             <Banner></Banner>
         </div>
     );
