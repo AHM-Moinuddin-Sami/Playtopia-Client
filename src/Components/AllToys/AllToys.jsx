@@ -42,8 +42,6 @@ const AllToys = () => {
         setCurrentPage(0);
     };
 
-    console.log(toys);
-
     return (
         <div>
             <div>
