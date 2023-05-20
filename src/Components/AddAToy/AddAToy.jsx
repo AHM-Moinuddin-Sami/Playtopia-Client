@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddAToy = () => {
 
@@ -47,7 +48,13 @@ const AddAToy = () => {
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
-                    alert('Product added successfully')
+                    Swal.fire({
+                        title: 'Toy added successfully',
+                        text: "The product has been added to the database!",
+                        icon: 'success',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Okay'
+                    })
                 }
             })
 

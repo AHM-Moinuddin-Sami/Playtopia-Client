@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import MyToysEntry from "./MyToysEntry/MyToysEntry";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [sort, setSort] = useState(null);
+    const [update, setUpdate] = useState(null);
+    const [deleted, setDeleted] = useState(null);
 
     const itemsPerPage = 20;
 
@@ -32,12 +35,80 @@ const MyToys = () => {
             setToys(data);
         }
         fetchData();
-    }, [currentPage, itemsPerPage, sort, user]);
+    }, [currentPage, itemsPerPage, sort, user, update, deleted]);
 
     const handleSort = (direction) => {
         setSort(direction);
         setCurrentPage(0);
     };
+
+    const handleUpdate = (id, updatedPrice, updatedDescription, updatedQuantity) => {
+
+        fetch(`http://localhost:5000/toys/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ updatedDescription, updatedPrice, updatedQuantity })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "The values will be updated!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            setDeleted(data.modifiedCount);
+                            Swal.fire(
+                                'Updated!',
+                                'Your file has been updated.',
+                                'success'
+                            )
+                        }
+                    })
+
+                }
+            })
+
+        console.log(updatedDescription, updatedPrice, updatedQuantity)
+    }
+
+    const handleDelete = (id) => {
+        fetch(`http://localhost:5000/toys/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    Swal.fire({
+                        title: 'Are you sure you want to delete this entry?',
+                        text: "This cannot be reverted!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            setUpdate(data.deletedCount);
+                            Swal.fire(
+                                'Deleted!',
+                                'The entry has been successfully deleted.',
+                                'success'
+                            )
+                        }
+                    })
+                }
+            })
+    }
 
     console.log(toys);
     return (
@@ -76,6 +147,8 @@ const MyToys = () => {
                                 id={toy._id}
                                 photo={toy.photo}
                                 description={toy.description}
+                                handleUpdate={handleUpdate}
+                                handleDelete={handleDelete}
                             >
 
                             </MyToysEntry>)
