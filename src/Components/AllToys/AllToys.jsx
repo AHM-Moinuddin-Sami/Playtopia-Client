@@ -45,17 +45,16 @@ const AllToys = () => {
     return (
         <div>
             <div>
-                <h3>Search a toy</h3>
-                <form className="form-control" onSubmit={handleSearch}>
-                    <input name="search" type="text" className="input input-bordered" />
-                    <button className="btn" type="submit"></button>
+                <form className="flex justify-center my-5" onSubmit={handleSearch}>
+                    <input name="search" type="text" placeholder="Search a toy" className="input input-bordered min-w-max mr-2" />
+                    <button className="btn" type="submit">Search</button>
                 </form>
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="text-center">
                             <th>No.</th>
                             <th>Seller</th>
                             <th>Toy</th>
@@ -76,6 +75,7 @@ const AllToys = () => {
                                 price={toy.price}
                                 quantity={toy.quantity}
                                 id={toy._id}
+                                photo={toy.photo}
                             >
 
                             </ToyEntry>)
@@ -83,7 +83,7 @@ const AllToys = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="pagination">
+            <div className="pagination text-center">
                 <div className="btn-group">
                     {
                         pageNo.map(number => <button

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
-const ToyEntry = ({ id, name, no, seller, price, quantity, subCategory, photo }) => {
-
+const MyToysEntry = ({ id, name, no, seller, email, price, quantity, subCategory, photo, description }) => {
     let category;
 
     switch (subCategory) {
@@ -17,14 +16,8 @@ const ToyEntry = ({ id, name, no, seller, price, quantity, subCategory, photo })
     }
 
     return (
-        <tr className="w-full text-center">
+        <tr className="w-full text-center overflow-hidden">
             <th>{no + 1}</th>
-            {
-                seller ?
-                    <td>{seller}</td>
-                    :
-                    <td></td>
-            }
             <td className="flex items-center">
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -37,12 +30,32 @@ const ToyEntry = ({ id, name, no, seller, price, quantity, subCategory, photo })
                     </div>
                 </div>
             </td>
+            {
+                seller ?
+                    <>
+                        <td>{seller}</td>
+                    </>
+                    :
+                    <>
+                        <td>Anonymous Seller</td>
+                    </>
+            }
+            <td>{email}</td>
             <td>{category}</td>
+            <td className="overflow-x-scroll whitespace-nowrap max-w-[450px]">{description}</td>
             <td>{price} $</td>
             <td>{quantity}</td>
-            <td><Link to={`/toys/${id}`}><button className="btn btn-ghost btn-xs">View details</button></Link></td>
+            <td><label htmlFor="my-modal" className="btn">open modal</label></td>
+            <input type="checkbox" id="my-modal" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box">
+                    <form action="">
+                        <input type="text" />
+                    </form>
+                </div>
+            </div>
         </tr>
     );
 };
 
-export default ToyEntry;
+export default MyToysEntry;
