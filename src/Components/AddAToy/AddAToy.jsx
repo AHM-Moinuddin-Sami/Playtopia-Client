@@ -36,7 +36,7 @@ const AddAToy = () => {
 
         console.log(toy);
 
-        fetch('http://localhost:5000/toys', {
+        fetch('https://playtopia-server.vercel.app/toys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
