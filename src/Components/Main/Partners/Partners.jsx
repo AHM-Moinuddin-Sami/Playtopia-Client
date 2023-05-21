@@ -14,7 +14,7 @@ const logos = [
 const Partners = () => {
     return (
         <div>
-            <h3 className='text-center text-6xl text-primary-content my-10 font-semibold'>Our Partners</h3>
+            <h3 className='text-center text-xl md:text-6xl text-primary-content my-10 font-semibold'>Our Partners</h3>
             <Marquee speed={300} className="my-10 md:w-[10vh]">
                 {
                     logos.map((logo, i) => <img

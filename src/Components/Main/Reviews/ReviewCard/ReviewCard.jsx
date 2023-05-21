@@ -15,12 +15,12 @@ const ReviewCard = ({ name, photo, review, index, rating }) => {
 
     }, [index])
     return (
-        <div data-aos={fadeDirection} data-aos-duration="1000" className="card items-center md:w-96 bg-base-200 my-3">
+        <div data-aos={fadeDirection} data-aos-duration="1000" className="card items-center w-10/12 md:w-96 bg-base-200 my-3">
             <img className="h-20 w-20 mt-3 rounded-full object-fit" src={photo} />
             <div className="card-body">
                 <h2 className="card-title text-2xl">{name}</h2>
                 <p>{review}</p>
-                <div className="flex items-center"><span className='mr-2 text-xl'>Rating:</span><Rating
+                <div className="flex items-center"><span className='mr-2 md:text-xl'>Rating:</span><Rating
                     style={{ maxWidth: 150 }}
                     value={rating}
                     readOnly

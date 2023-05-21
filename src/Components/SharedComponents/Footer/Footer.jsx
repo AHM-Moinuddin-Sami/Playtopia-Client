@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center p-10 bg-gradient-to-b from-transparent via-blue-600 to-blue-800 text-primary-content">
+        <footer className="footer footer-center md:p-10 bg-gradient-to-b from-transparent via-blue-600 to-blue-800 text-primary-content">
             <div>
                 <img className="h-20 w-20" src="https://cdn1.iconfinder.com/data/icons/game-design-butterscotch-vol-1/256/Dice_Board_Game-512.png" alt="" />
                 <p className="font-bold">

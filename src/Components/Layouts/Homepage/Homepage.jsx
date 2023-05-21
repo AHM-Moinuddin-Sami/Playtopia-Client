@@ -8,7 +8,9 @@ const Homepage = () => {
     return (
         <div className="bg-gradient-to-b from-blue-600 via-blue-300 to-blue-600">
             <NavBar></NavBar>
-            <Outlet></Outlet>
+            <div className="w-fit">
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
     );

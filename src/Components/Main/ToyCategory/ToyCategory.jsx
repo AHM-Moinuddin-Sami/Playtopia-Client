@@ -15,9 +15,9 @@ const ToyCategory = () => {
 
     return (
         <div className='my-5 md:mx-auto'>
-            <h3 className='text-center text-6xl text-primary-content mb-5 font-semibold'>Browse toys by Category</h3>
+            <h3 className='text-center md:text-6xl text-primary-content mb-5 font-semibold'>Browse toys by Category</h3>
             <Tabs>
-                <div className="text-center ">
+                <div className="text-center">
                     <TabList >
                         <Tab>Traditional Boardgames</Tab>
                         <Tab>Tabletop Boardgames</Tab>

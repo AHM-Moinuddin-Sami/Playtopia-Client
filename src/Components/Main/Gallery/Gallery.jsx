@@ -15,12 +15,12 @@ const Gallery = () => {
     }, [])
 
     return (
-        <div >
+        <div className=' mx-auto'>
             <div className="text-primary-content font-semibold text-center my-10">
-                <h3 className='text-6xl mb-5'>Gallery Section</h3>
-                <p className='text-xl'>Check out some pictures of our products</p>
+                <h3 className='text-xl md:text-6xl mb-5'>Gallery Section</h3>
+                <p className=''>Check out some pictures of our products</p>
             </div>
-            <div data-aos="fade-up" data-aos-duration="1000">
+            <div className='' data-aos="fade-up" data-aos-duration="1000">
                 <PhotoAlbum layout="columns" photos={photos}>
                 </PhotoAlbum>
             </div>
