@@ -27,10 +27,10 @@ const MyToys = () => {
             console.log(sort);
             let url;
             if (sort) {
-                url = `http://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}&sort=${sort}&email=${user.email}`;
+                url = `https://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}&sort=${sort}&email=${user.email}`;
             }
             else {
-                url = `http://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}&email=${user.email}`;
+                url = `https://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}&email=${user.email}`;
             }
             const response = await fetch(url);
             const data = await response.json();
@@ -46,7 +46,7 @@ const MyToys = () => {
 
     const handleUpdate = (id, updatedPrice, updatedDescription, updatedQuantity) => {
 
-        fetch(`http://playtopia-server.vercel.app/toys/${id}`, {
+        fetch(`https://playtopia-server.vercel.app/toys/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -83,7 +83,7 @@ const MyToys = () => {
     }
 
     const handleDelete = (id) => {
-        fetch(`http://playtopia-server.vercel.app/toys/${id}`, {
+        fetch(`https://playtopia-server.vercel.app/toys/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

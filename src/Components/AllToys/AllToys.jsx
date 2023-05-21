@@ -25,10 +25,10 @@ const AllToys = () => {
         async function fetchData() {
             let url;
             if (searchTerm) {
-                url = `http://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}&searchedToy=${searchTerm}`;
+                url = `https://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}&searchedToy=${searchTerm}`;
             }
             else {
-                url = `http://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}`;
+                url = `https://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}`;
             }
             const response = await fetch(url);
             const data = await response.json();
