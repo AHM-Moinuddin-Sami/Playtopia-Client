@@ -30,7 +30,7 @@ const NavBar = () => {
                         <li><Link to={"/blog"}>Blogs</Link></li>
                     </ul>
                 </div>
-                <Link className="text-3xl font-bold flex items-center"><img className="h-14 w-14" src="https://cdn1.iconfinder.com/data/icons/game-design-butterscotch-vol-1/256/Dice_Board_Game-512.png" alt="" /> <span>Playtopia</span></Link>
+                <Link className="md:text-3xl text-xl font-bold flex items-center"><img className="h-10 w-10 md:h-14 md:w-14" src="https://cdn1.iconfinder.com/data/icons/game-design-butterscotch-vol-1/256/Dice_Board_Game-512.png" alt="" /> <span>Playtopia</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -53,7 +53,7 @@ const NavBar = () => {
                                 <div className={user.displayName ? `tooltip hover:tooltip-open tooltip-bottom` : ''} data-tip={user.displayName}>
                                     {
                                         user.photoURL ?
-                                            <img className='rounded-full md:w-10 w-14 h-14 md:h-10' src={user.photoURL} onError={handleImageError} />
+                                            <img className='rounded-full w-10 h-10' src={user.photoURL} onError={handleImageError} />
                                             :
                                             <FaRegUserCircle className='h-10 w-10 text-white'></FaRegUserCircle>
                                     }
