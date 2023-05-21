@@ -25,10 +25,10 @@ const AllToys = () => {
         async function fetchData() {
             let url;
             if (searchTerm) {
-                url = `http://localhost:5000/toys?page=${currentPage}&limit=${itemsPerPage}&searchedToy=${searchTerm}`;
+                url = `http://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}&searchedToy=${searchTerm}`;
             }
             else {
-                url = `http://localhost:5000/toys?page=${currentPage}&limit=${itemsPerPage}`;
+                url = `http://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}`;
             }
             const response = await fetch(url);
             const data = await response.json();
@@ -47,6 +47,7 @@ const AllToys = () => {
     return (
         <div>
             <div>
+                <h3 className="text-6xl text-center text-primary-content">All Toys</h3>
                 <form className="flex justify-center my-5" onSubmit={handleSearch}>
                     <input name="search" type="text" placeholder="Search a toy" className="input input-bordered min-w-max mr-2" />
                     <button className="btn" type="submit">Search</button>
@@ -92,7 +93,7 @@ const AllToys = () => {
                             key={number}
                             className={`btn active:bg-purple-700 ${currentPage === number ? 'selected btn-disabled' : ''}`}
                             onClick={() => setCurrentPage(number)}
-                        >{number+1}</button>)
+                        >{number + 1}</button>)
                     }
                 </div>
             </div>

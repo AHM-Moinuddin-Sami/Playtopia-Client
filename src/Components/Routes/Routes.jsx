@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             {
                 path: "/allToys",
                 element: <AllToys></AllToys>,
-                loader: () => fetch("http://localhost:5000/toys")
+                loader: () => fetch("http://playtopia-server.vercel.app/toys")
             },
             {
                 path: "/myToys",
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             {
                 path: "/toys/:id",
                 element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+                loader: ({ params }) => fetch(`http://playtopia-server.vercel.app/toys/${params.id}`)
             }
 
         ]

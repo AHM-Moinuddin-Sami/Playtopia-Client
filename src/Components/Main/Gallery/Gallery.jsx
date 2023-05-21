@@ -9,7 +9,7 @@ const Gallery = () => {
 
     useEffect(() => {
         AOS.init();
-        fetch("http://localhost:5000/galleryPhotos")
+        fetch("http://playtopia-server.vercel.app/galleryPhotos")
             .then(res => res.json())
             .then(data => setPhotos(data));
     }, [])

@@ -27,10 +27,10 @@ const MyToys = () => {
             console.log(sort);
             let url;
             if (sort) {
-                url = `http://localhost:5000/toys?page=${currentPage}&limit=${itemsPerPage}&sort=${sort}&email=${user.email}`;
+                url = `http://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}&sort=${sort}&email=${user.email}`;
             }
             else {
-                url = `http://localhost:5000/toys?page=${currentPage}&limit=${itemsPerPage}&email=${user.email}`;
+                url = `http://playtopia-server.vercel.app/toys?page=${currentPage}&limit=${itemsPerPage}&email=${user.email}`;
             }
             const response = await fetch(url);
             const data = await response.json();
@@ -46,7 +46,7 @@ const MyToys = () => {
 
     const handleUpdate = (id, updatedPrice, updatedDescription, updatedQuantity) => {
 
-        fetch(`http://localhost:5000/toys/${id}`, {
+        fetch(`http://playtopia-server.vercel.app/toys/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -83,7 +83,7 @@ const MyToys = () => {
     }
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/toys/${id}`, {
+        fetch(`http://playtopia-server.vercel.app/toys/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -116,7 +116,8 @@ const MyToys = () => {
     return (
         <div>
             <div className="my-4 text-center">
-                <button onClick={() => handleSort(1)} className="btn mr-2">Ascending</button>
+                <h3 className="text-6xl text-primary-content">My Toys</h3>
+                <button onClick={() => handleSort(1)} className="btn mt-5 mr-2">Ascending</button>
                 <button onClick={() => handleSort(-1)} className="btn">Descending</button>
             </div>
             <div className="overflow-x-auto min-h-[70vh]">
