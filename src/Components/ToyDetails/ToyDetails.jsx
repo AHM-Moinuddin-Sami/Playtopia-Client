@@ -1,8 +1,10 @@
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../CustomHooks/useTitle";
 
 const ToyDetails = () => {
     const toyDetails = useLoaderData();
     const { toyName, photo, price, rating, sellerName, sellerEmail, quantity, description } = toyDetails;
+    useTitle(toyName);
     return (
         <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: `url("https://i.pinimg.com/originals/3c/24/46/3c24462450c2a902bf7e18f3d9aada81.jpg")` }}>
             <div className="hero-content flex-col lg:flex-row bg-white p-10 rounded-lg">
