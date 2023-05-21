@@ -17,7 +17,7 @@ const AllToys = () => {
     const totalPages = Math.ceil(allToys.length / itemsPerPage);
 
     const pageNo = [];
-    for (let i = 1; i <= totalPages; i++) {
+    for (let i = 0; i <= totalPages; i++) {
         pageNo.push(i);
     }
 
@@ -90,9 +90,9 @@ const AllToys = () => {
                     {
                         pageNo.map(number => <button
                             key={number}
-                            className={`btn active:bg-purple-700 ${currentPage + 1 === number ? 'selected btn-disabled' : ''}`}
+                            className={`btn active:bg-purple-700 ${currentPage === number ? 'selected btn-disabled' : ''}`}
                             onClick={() => setCurrentPage(number)}
-                        >{number}</button>)
+                        >{number+1}</button>)
                     }
                 </div>
             </div>

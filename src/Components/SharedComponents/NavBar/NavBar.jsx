@@ -30,7 +30,7 @@ const NavBar = () => {
                         <li><Link to={"/blog"}>Blogs</Link></li>
                     </ul>
                 </div>
-                <Link className="text-3xl font-bold">Playtopia</Link>
+                <Link className="text-3xl font-bold flex items-center"><img className="h-14 w-14" src="https://cdn1.iconfinder.com/data/icons/game-design-butterscotch-vol-1/256/Dice_Board_Game-512.png" alt="" /> <span>Playtopia</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

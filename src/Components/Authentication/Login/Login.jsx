@@ -64,11 +64,11 @@ const Login = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1206&q=80")` }}>
-            <div className="hero-content flex-col lg:flex-row">
-                <div className="text-center lg:text-left">
+        <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1586941963134-6486b671b809?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")` }}>
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="min-w-[50vh] text-center lg:text-left text-base-200">
                     <h1 className="text-5xl font-bold">Login now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p className="py-6">Enter your credentials to login.</p>
                 </div>
 
                 <div className='card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>

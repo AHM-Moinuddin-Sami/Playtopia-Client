@@ -96,12 +96,12 @@ const AddAToy = () => {
                     <label className="label">
                         <span className="label-text text-xl">Price</span>
                     </label>
-                    <input name='price' type="number" required placeholder="0.00$" className="input input-bordered" />
+                    <input name='price' type="number" step={0.01} required placeholder="0.00$" className="input input-bordered" />
 
                     <label className="label">
                         <span className="label-text text-xl">Rating</span>
                     </label>
-                    <input name='rating' type="number" min={0} max={5} step={0.5} required placeholder="Enter rating" className="input input-bordered" />
+                    <input name='rating' type="number" min={0} max={5} step={0.1} required placeholder="Enter rating" className="input input-bordered" />
 
                     <label className="label">
                         <span className="label-text text-xl">Quantity</span>

@@ -6,7 +6,7 @@ import useTitle from "../../CustomHooks/useTitle";
 const Homepage = () => {
     useTitle("Home");
     return (
-        <div>
+        <div className="bg-blue-200">
             <NavBar></NavBar>
             <Outlet></Outlet>
             <Footer></Footer>
