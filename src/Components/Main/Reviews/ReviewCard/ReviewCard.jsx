@@ -15,7 +15,7 @@ const ReviewCard = ({ name, photo, review, index, rating }) => {
 
     }, [index])
     return (
-        <div data-aos={fadeDirection} data-aos-duration="1000" className="card items-center w-96 bg-base-200 my-3">
+        <div data-aos={fadeDirection} data-aos-duration="1000" className="card items-center md:w-96 bg-base-200 my-3">
             <img className="h-20 w-20 mt-3 rounded-full object-fit" src={photo} />
             <div className="card-body">
                 <h2 className="card-title text-2xl">{name}</h2>

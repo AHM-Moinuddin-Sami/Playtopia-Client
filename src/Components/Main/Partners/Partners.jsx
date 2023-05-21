@@ -15,12 +15,12 @@ const Partners = () => {
     return (
         <div>
             <h3 className='text-center text-6xl text-primary-content my-10 font-semibold'>Our Partners</h3>
-            <Marquee gradient={true} speed={300} gradientColor={[37 ,99 ,235]} gradientWidth={500} className="my-10 w-[10vh]">
+            <Marquee speed={300} className="my-10 md:w-[10vh]">
                 {
                     logos.map((logo, i) => <img
                         key={i}
                         src={logo}
-                        className="h-[15vh] w-fit"
+                        className="h-[15vh] md:w-fit"
                     >
                     </img>)
                 }
