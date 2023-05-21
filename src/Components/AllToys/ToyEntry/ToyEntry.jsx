@@ -23,7 +23,7 @@ const ToyEntry = ({ id, name, no, seller, price, quantity, subCategory, photo })
                 seller ?
                     <td>{seller}</td>
                     :
-                    <td></td>
+                    <td>Anonymous Seller</td>
             }
             <td className="flex items-center">
                 <div className="flex items-center space-x-3">

@@ -12,22 +12,27 @@ const Reviews = () => {
     }, [])
 
     return (
-        <div className='' style={{ backgroundImage: `url("https://images.unsplash.com/photo-1541256942802-7b29531f0df8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")` }}>
-            <div className="md:grid w-9/12 mx-auto md:grid-cols-2 bg-cover gap-3 justify-items-center bg-transparent">
-                {
-                    reviews.map((review, i) => <ReviewCard
-                        key={i}
-                        name={review.reviewerName}
-                        photo={review.avatar}
-                        rating={review.rating}
-                        review={review.review}
-                        index={i}
-                    ></ReviewCard>
-                    )
-                }
+        <div>
+            <h3 className='text-center text-6xl text-primary-content my-10 font-semibold'>Check out some reviews from our customers</h3>
+            <div className="bg-gradient-to-b from-transparent via-blue-700 to-transparent">
+                <div className="md:grid w-9/12 mx-auto md:grid-cols-2 bg-cover gap-3 justify-items-center bg-transparent">
+                    {
+                        reviews.map((review, i) => <ReviewCard
+                            key={i}
+                            name={review.reviewerName}
+                            photo={review.avatar}
+                            rating={review.rating}
+                            review={review.review}
+                            index={i}
+                        ></ReviewCard>
+                        )
+                    }
+                </div>
             </div>
-        </div>
 
+
+
+        </div>
     );
 };
 

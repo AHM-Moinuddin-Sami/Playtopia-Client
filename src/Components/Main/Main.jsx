@@ -1,6 +1,7 @@
 import useTitle from "../CustomHooks/useTitle";
 import Banner from "./Banner/Banner";
 import Gallery from "./Gallery/Gallery";
+import Partners from "./Partners/Partners";
 import Reviews from "./Reviews/Reviews";
 import ToyCategory from "./ToyCategory/ToyCategory";
 
@@ -12,6 +13,7 @@ const Main = () => {
             <Gallery></Gallery>
             <ToyCategory></ToyCategory>
             <Reviews></Reviews>
+            <Partners></Partners>
         </div>
     );
 };

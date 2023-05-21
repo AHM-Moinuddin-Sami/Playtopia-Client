@@ -10,13 +10,16 @@ const Gallery = () => {
     useEffect(() => {
         AOS.init();
         fetch("http://localhost:5000/galleryPhotos")
-        .then(res => res.json())
-        .then(data => setPhotos(data));
+            .then(res => res.json())
+            .then(data => setPhotos(data));
     }, [])
 
     return (
         <div >
-            <h3 className="text-6xl my-10">Gallery Section</h3>
+            <div className="text-primary-content font-semibold text-center my-10">
+                <h3 className='text-6xl mb-5'>Gallery Section</h3>
+                <p className='text-xl'>Check out some pictures of our products</p>
+            </div>
             <div data-aos="fade-up" data-aos-duration="1000">
                 <PhotoAlbum layout="columns" photos={photos}>
                 </PhotoAlbum>
